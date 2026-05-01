@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правительство Аризоны | Saint Rose RP - Подготовка к собеседованию</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a5f7a;
+            --primary-dark: #0d3d4d;
+            --secondary: #ffc107;
+            --accent: #ff6b35;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --success: #10b981;
+            --border: #334155;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1a2e 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--text-primary);
+            background: rgba(255, 193, 7, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: radial-gradient(ellipse at center, rgba(26, 95, 122, 0.3) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 80px;
+            width: 280px;
+            height: calc(100vh - 80px);
+            background: var(--bg-card);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .sidebar h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .chapter-list {
+            list-style: none;
+        }
+
+        .chapter-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .chapter-btn {
+            width: 100%;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .chapter-btn:hover,
+        .chapter-btn.active {
+            background: rgba(255, 193, 7, 0.1);
+            border-color: var(--secondary);
+            color: var(--text-primary);
+        }
+
+        .main-content {
+            margin-left: 280px;
+            padding: 2rem;
+        }
+
+        .chapter-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .chapter-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chapter-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .topic-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .topic-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .topic-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .topic-content {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .answer-block {
+            background: rgba(26, 95, 122, 0.2);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .answer-label {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .key-points {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .key-points li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .key-points li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .important-note {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid var(--secondary);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .important-note strong {
+            color: var(--secondary);
+        }
+
+        /* Search */
+        .search-box {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 1rem;
+            z-index: 1000;
+        }
+
+        .mobile-nav ul {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+        }
+
+        .mobile-nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .mobile-nav a.active {
+            color: var(--secondary);
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-nav {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        .emoji {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">🏛️</span>
+                <span>Arizona Gov | Saint Rose RP</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" data-chapter="intro">Главная</a></li>
+                    <li><a href="#" data-chapter="constitution">Устав</a></li>
+                    <li><a href="#" data-chapter="structure">Структура</a></li>
+                    <li><a href="#" data-chapter="laws">Законы</a></li>
+                    <li><a href="#" data-chapter="interview">Собеседование</a></li>
+                    <li><a href="#" data-chapter="ethics">Этика</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>🎯 Подготовка к Правительству Аризоны</h1>
+        <p>Полный гайд по всем вопросам для успешного прохождения собеседования в Правительство штата Аризона на сервере Saint Rose RP</p>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Глав</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Вопросов с ответами</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Актуальная информация</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h3>📚 Содержание</h3>
+        <ul class="chapter-list">
+            <li><button class="chapter-btn active" data-chapter="intro">🏠 Введение</button></li>
+            <li><button class="chapter-btn" data-chapter="constitution">📜 Устав Правительства</button></li>
+            <li><button class="chapter-btn" data-chapter="structure">🏢 Структура Власти</button></li>
+            <li><button class="chapter-btn" data-chapter="laws">⚖️ Законодательство</button></li>
+            <li><button class="chapter-btn" data-chapter="interview">💼 Вопросы Собеседования</button></li>
+            <li><button class="chapter-btn" data-chapter="ethics">🎖️ Кодекс Этики</button></li>
+            <li><button class="chapter-btn" data-chapter="situations">🎭 Ситуационные Задачи</button></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Introduction Chapter -->
+        <section id="intro" class="chapter-section active">
+            <h2 class="chapter-title">🏠 Введение в Правительство Аризоны</h2>
+            
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">🎯</span>
+                    Что такое Правительство штата?
+                </div>
+                <div class="topic-content">
+                    <p>Правительство штата Аризона — высший орган исполнительной власти, отвечающий за управление штатом, разработку законов и обеспечение безопасности граждан.</p>
+                    <div class="answer-block">
+                        <span class="answer-label">Краткий ответ:</span>
+                        <p>Правительство — руководящий орган штата, состоящий из Губернатора, Вице-Губернатора, Сената и различных департаментов. Отвечает за законодательство, бюджет, безопасность и развитие штата.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">👥</span>
+                    Кто входит в состав Правительства?
+                </div>
+                <div class="topic-content">
+                    <ul class="key-points">
+                        <li><strong>Губернатор</strong> — глава штата, высшая должность</li>
+                        <li><strong>Вице-Губернатор</strong> — заместитель губернатора</li>
+                        <li><strong>Сенат</strong> — законодательный орган</li>
+                        <li><strong>Департаменты</strong> — исполнительные органы (МЧС, Полиция, Здравоохранение и др.)</li>
+                        <li><strong>Советники</strong> — помощники губернатора по различным вопросам</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">⭐</span>
+                    Цели и задачи Правительства
+                </div>
+                <div class="topic-content">
+                    <ul class="key-points">
+                        <li>Обеспечение безопасности и правопорядка в штате</li>
+                        <li>Разработка и принятие законов</li>
+                        <li>Управление бюджетом штата</li>
+                        <li>Развитие инфраструктуры и экономики</li>
+                        <li>Защита прав граждан</li>
+                        <li>Координация работы всех государственных структур</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="important-note">
+                <strong>💡 Важно знать:</strong> На собеседовании покажи знание структуры, готовность работать в команде и понимание ответственности должности.
+            </div>
+        </section>
+
+        <!-- Constitution Chapter -->
+        <section id="constitution" class="chapter-section">
+            <h2 class="chapter-title">📜 Устав Правительства Аризоны</h2>
+            
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">📋</span>
+                    Основные положения Устава
+                </div>
+                <div class="topic-content">
+                    <p>Устав Правительства — основной документ, регламентирующий деятельность государственной власти штата Аризона.</p>
+                    <div class="answer-block">
+                        <span class="answer-label">Ключевые пункты:</span>
+                        <ul class="key-points">
+                            <li>Правительство действует от имени штата и граждан</li>
+                            <li>Все решения принимаются демократическим путём</li>
+                            <li>Каждый член Правительства несёт ответственность за свои действия</li>
+                            <li>Приоритет — благополучие штата и его жителей</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">🔰</span>
+                    Права членов Правительства
+                </div>
+                <div class="topic-content">
+                    <ul class="key-points">
+                        <li>Участвовать в заседаниях и голосованиях</li>
+                        <li>Вносить предложения и законопроекты</li>
+                        <li>Получать доступ к государственной информации</li>
+                        <li>Представлять интересы штата</li>
+                        <li>Инициировать проверки и расследования</li>
+                        <li>Пользоваться служебным транспортом и ресурсами</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">⚠️</span>
+                    Обязанности членов Правительства
+                </div>
+                <div class="topic-content">
+                    <ul class="key-points">
+                        <li>Соблюдать Устав и законы штата</li>
+                        <li>Посещать обязательные мероприятия и заседания</li>
+                        <li>Выполнять поручения вышестоящего руководства</li>
+                        <li>Поддерживать репутацию Правительства</li>
+                        <li>Оперативно реагировать на ЧС и проблемы штата</li>
+                        <li>Вести отчётность по своей деятельности</li>
+                        <li>Не разглашать конфиденциальную информацию</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">🚫</span>
+                    Запреты и ограничения
+                </div>
+                <div class="topic-content">
+                    <ul class="key-points">
+                        <li>Запрещено использование положения в личных целях</li>
+                        <li>Запрещена коррупция и взяточничество</li>
+                        <li>Запрещено разглашение гостайны</li>
+                        <li>Запрещены действия во вред штату</li>
+                        <li>Запрещено нарушение Конституции сервера</li>
+                        <li>Запрещена дискриминация по любым признакам</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="important-note">
+                <strong>💡 На собеседовании:</strong> Обязательно упомяни, что знаешь о запрете на злоупотребление должностью и готов соблюдать все пункты Устава.
+            </div>
+        </section>
+
+        <!-- Structure Chapter -->
+        <section id="structure" class="chapter-section">
+            <h2 class="chapter-title">🏢 Структура Власти Аризоны</h2>
+            
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">👑</span>
+                    Губернатор штата
+                </div>
+                <div class="topic-content">
+                    <p><strong>Высшая должность в штате.</strong></p>
+                    <div class="answer-block">
+                        <span class="answer-label">Полномочия:</span>
+                        <ul class="key-points">
+                            <li>Издание указов и распоряжений</li>
+                            <li>Назначение и снятие чиновников</li>
+                            <li>Представление штата на межгосударственном уровне</li>
+                            <li>Контроль бюджета штата</li>
+                            <li>Объявление ЧП и военного положения</li>
+                            <li>Помилование преступников (в рамках закона)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">🥈</span>
+                    Вице-Губернатор
+                </div>
+                <div class="topic-content">
+                    <p><strong>Первый заместитель Губернатора.</strong></p>
+                    <div class="answer-block">
+                        <span class="answer-label">Функции:</span>
+                        <ul class="key-points">
+                            <li>Замещает Губернатора при отсутствии</li>
+                            <li>Координирует работу департаментов</li>
+                            <li>Курирует важные проекты штата</li>
+                            <li>Представляет Губернатора на мероприятиях</li>
+                            <li>Помогает в принятии стратегических решений</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">🏛️</span>
+                    Сенат Аризоны
+                </div>
+                <div class="topic-content">
+                    <p><strong>Законодательный орган штата.</strong></p>
+                    <div class="answer-block">
+                        <span class="answer-label">Задачи:</span>
+                        <ul class="key-points">
+                            <li>Разработка и принятие законов</li>
+                            <li>Утверждение бюджета штата</li>
+                            <li>Контроль за исполнением законов</li>
+                            <li>Рассмотрение импичмента чиновников</li>
+                            <li>Одобрение назначений Губернатора</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">🚒</span>
+                    Департаменты Правительства
+                </div>
+                <div class="topic-content">
+                    <ul class="key-points">
+                        <li><strong>МЧС (Emergency Medical Services)</strong> — медицина, спасательные операции</li>
+                        <li><strong>Полиция (Police Department)</strong> — охрана правопорядка</li>
+                        <li><strong>ФБР (Federal Bureau of Investigation)</strong> — федеральные расследования</li>
+                        <li><strong>Министерство Юстиции</strong> — прокуратура, адвокаты</li>
+                        <li><strong>Департамент Транспорта</strong> — дороги, транспортная инфраструктура</li>
+                        <li><strong>Министерство Экономики</strong> — бизнес, налоги, финансы</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">📊</span>
+                    Иерархия подчинения
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <p><strong>Схема:</strong></p>
+                        <ul class="key-points">
+                            <li>Губернатор → Вице-Губернатор → Главы Департаментов → Сотрудники</li>
+                            <li>Сенат независим от исполнительной власти, но взаимодействует с Губернатором</li>
+                            <li>Все гос. организации подотчётны Правительству</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Laws Chapter -->
+        <section id="laws" class="chapter-section">
+            <h2 class="chapter-title">⚖️ Законодательство Аризоны</h2>
+            
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">📖</span>
+                    Виды нормативных актов
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Иерархия документов:</span>
+                        <ul class="key-points">
+                            <li><strong>Конституция сервера</strong> — высший закон</li>
+                            <li><strong>Указы Губернатора</strong> — обязательны к исполнению</li>
+                            <li><strong>Законы Сената</strong> — приняты законодательным органом</li>
+                            <li><strong>Постановления Правительства</strong> — регламенты работы</li>
+                            <li><strong>Приказы департаментов</strong> — внутренние документы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">✍️</span>
+                    Процесс создания закона
+                </div>
+                <div class="topic-content">
+                    <ul class="key-points">
+                        <li>Инициатива от члена Правительства или Сената</li>
+                        <li>Разработка текста законопроекта</li>
+                        <li>Обсуждение в Сенате</li>
+                        <li>Голосование Сената (большинство голосов)</li>
+                        <li>Подпись Губернатора (или вето)</li>
+                        <li>Публикация и вступление в силу</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">🔢</span>
+                    Основные статьи УК (для знания)
+                </div>
+                <div class="topic-content">
+                    <ul class="key-points">
+                        <li><strong>1.1</strong> — Незнание законов не освобождает от ответственности</li>
+                        <li><strong>2.1</strong> — Превышение должностных полномочий</li>
+                        <li><strong>3.1</strong> — Коррупция и взяточничество</li>
+                        <li><strong>4.1</strong> — Государственная измена</li>
+                        <li><strong>5.1</strong> — Разглашение гостайны</li>
+                        <li><strong>6.1</strong> — Саботаж и бездействие</li>
+                    </ul>
+                    <div class="important-note">
+                        <strong>💡 Совет:</strong> Точно знай номера статей за коррупцию, превышение полномочий и госизмену — спрашивают часто!
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">⚖️</span>
+                    Наказания для госслужащих
+                </div>
+                <div class="topic-content">
+                    <ul class="key-points">
+                        <li><strong>Замечание</strong> — за мелкие нарушения</li>
+                        <li><strong>Выговор</strong> — за серьёзные проступки</li>
+                        <li><strong>Штраф</strong> — финансовое наказание</li>
+                        <li><strong>Демонстрация</strong> — снятие с должности</li>
+                        <li><strong>Импичмент</strong> — для высоких чинов через Сенат</li>
+                        <li><strong>Тюремный срок</strong> — за уголовные преступления</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interview Questions Chapter -->
+        <section id="interview" class="chapter-section">
+            <h2 class="chapter-title">💼 Вопросы Собеседования с Ответами</h2>
+            
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">❓</span>
+                    «Расскажите о себе»
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Пример ответа:</span>
+                        <p>«Меня зовут [Имя], я активный игрок сервера с опытом игры [Х месяцев/лет]. Интересуюсь политикой и управлением. Имею опыт работы в [органах, если есть]. Хочу развиваться в Правительстве для улучшения штата и помощи гражданам.»</p>
+                    </div>
+                    <ul class="key-points">
+                        <li>Говори кратко и по делу</li>
+                        <li>Упомяни опыт и мотивацию</li>
+                        <li>Покажи готовность учиться</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">❓</span>
+                    «Почему хотите в Правительство?»
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Пример ответа:</span>
+                        <p>«Хочу приносить пользу штату, участвовать в развитии Аризоны, помогать гражданам. Мне интересна политическая деятельность и управление. Верю, что смогу быть полезен команде и реализовать важные проекты.»</p>
+                    </div>
+                    <ul class="key-points">
+                        <li>Не говори «ради власти» или «ради денег»</li>
+                        <li>Подчеркни желание помогать</li>
+                        <li>Упомяни конкретные цели</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">❓</span>
+                    «Что будете делать, если увидите коррупцию?»
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Правильный ответ:</span>
+                        <p>«Соберу доказательства (скриншоты, видео, логи), доложу вышестоящему руководству или в ФБР. Самостоятельно не буду проводить расследование, чтобы не нарушить процедуру. Главное — законность и прозрачность.»</p>
+                    </div>
+                    <ul class="key-points">
+                        <li>Покажи знание процедуры</li>
+                        <li>Подчеркни важность доказательств</li>
+                        <li>Не бери правосудие в свои руки</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">❓</span>
+                    «Как поступите при конфликте интересов?»
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Правильный ответ:</span>
+                        <p>«Доложу руководству о конфликте интересов, возьму самоотвод от принятия решения. Буду действовать строго по закону, приоритет — интересы штата, а не личные связи.»</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">❓</span>
+                    «Ваши сильные и слабые стороны?»
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Пример ответа:</span>
+                        <p><strong>Сильные:</strong> «Ответственность, коммуникабельность, умение работать в команде, быстрое обучение.»</p>
+                        <p><strong>Слабые:</strong> «Иногда слишком перфекционист, но учусь балансировать. Мало опыта, но готов компенсировать старанием.»</p>
+                    </div>
+                    <ul class="key-points">
+                        <li>Будь честным, но тактичным</li>
+                        <li>Слабости превращай в зоны роста</li>
+                        <li>Не говори «у меня нет слабостей»</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">❓</span>
+                    «Сколько времени готовы уделять?»
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Пример ответа:</span>
+                        <p>«Готов уделять [Х часов в день / ежедневно]. Понимаю, что должность требует ответственности и регулярного присутствия. Буду планировать время для выполнения обязанностей.»</p>
+                    </div>
+                    <ul class="key-points">
+                        <li>Называй реалистичное время</li>
+                        <li>Покажи готовность к активности</li>
+                        <li>Не обещай невозможного</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">❓</span>
+                    «Что такое ЧС и как действовать?»
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Ответ:</span>
+                        <p>«ЧС — Чрезвычайная Ситуация (природные катаклизмы, теракты, массовые беспорядки). Действия: оповестить население, координировать службы (МЧС, полицию), организовать эвакуацию, обеспечить порядок, информировать граждан.»</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="important-note">
+                <strong>💡 Общие советы:</strong> Говори уверенно, но без самоуверенности. Знай устав и законы. Будь вежлив. Показывай мотивацию и готовность учиться.
+            </div>
+        </section>
+
+        <!-- Ethics Chapter -->
+        <section id="ethics" class="chapter-section">
+            <h2 class="chapter-title">🎖️ Кодекс Этики Госслужащего</h2>
+            
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">🤝</span>
+                    Основные принципы этики
+                </div>
+                <div class="topic-content">
+                    <ul class="key-points">
+                        <li><strong>Честность</strong> — всегда говорить правду, не искажать факты</li>
+                        <li><strong>Справедливость</strong> — равное отношение ко всем гражданам</li>
+                        <li><strong>Профессионализм</strong> — компетентность в своей работе</li>
+                        <li><strong>Конфиденциальность</strong> — защита служебной тайны</li>
+                        <li><strong>Лояльность</strong> — преданность штату и Правительству</li>
+                        <li><strong>Уважение</strong> — к коллегам и гражданам</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">🚫</span>
+                    Недопустимое поведение
+                </div>
+                <div class="topic-content">
+                    <ul class="key-points">
+                        <li>Оскорбления граждан и коллег</li>
+                        <li>Дискриминация по любым признакам</li>
+                        <li>Злоупотребление властью</li>
+                        <li>Публичные скандалы и конфликты</li>
+                        <li>Разглашение личной информации</li>
+                        <li>Конфликты интересов</li>
+                        <li>Бездействие в критических ситуациях</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">💬</span>
+                    Коммуникация с гражданами
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Правила общения:</span>
+                        <ul class="key-points">
+                            <li>Быть вежливым и тактичным</li>
+                            <li>Отвечать на вопросы в рамках компетенции</li>
+                            <li>Не давать ложных обещаний</li>
+                            <li>Сохранять спокойствие при провокациях</li>
+                            <li>Перенаправлять к нужному отделу при необходимости</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">🎯</span>
+                    Работа в команде
+                </div>
+                <div class="topic-content">
+                    <ul class="key-points">
+                        <li>Уважать мнение коллег</li>
+                        <li>Выполнять свои обязанности вовремя</li>
+                        <li>Помогать другим членам команды</li>
+                        <li>Конструктивно решать конфликты</li>
+                        <li>Не перекладывать ответственность</li>
+                        <li>Поддерживать единство Правительства публично</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Situations Chapter -->
+        <section id="situations" class="chapter-section">
+            <h2 class="chapter-title">🎭 Ситуационные Задачи</h2>
+            
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">🔥</span>
+                    Ситуация: Массовые беспорядки
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Действия:</span>
+                        <ol style="margin-left: 1.5rem; color: var(--text-secondary);">
+                            <li>Оценить масштаб и опасность ситуации</li>
+                            <li>Вызвать полицию для оцепления района</li>
+                            <li>Оповестить граждан через СМИ об опасности</li>
+                            <li>Координировать действия всех служб</li>
+                            <li>Вести переговоры с лидерами протеста</li>
+                            <li>При необходимости ввести комендантский час</li>
+                            <li>Документировать события для отчёта</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">🌪️</span>
+                    Ситуация: Природное бедствие
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Действия:</span>
+                        <ol style="margin-left: 1.5rem; color: var(--text-secondary);">
+                            <li>Объявить режим ЧС</li>
+                            <li>Активировать МЧС для спасательных операций</li>
+                            <li>Организовать эвакуацию из опасных зон</li>
+                            <li>Развернуть временные убежища</li>
+                            <li>Обеспечить доставку медикаментов и еды</li>
+                            <li>Координировать с другими штатами помощь</li>
+                            <li>Информировать население регулярно</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">💰</span>
+                    Ситуация: Обнаружена коррупция в департаменте
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Действия:</span>
+                        <ol style="margin-left: 1.5rem; color: var(--text-secondary);">
+                            <li>Собрать доказательства (не нарушая закон)</li>
+                            <li>Доложить Губернатору и в ФБР</li>
+                            <li>Инициировать официальное расследование</li>
+                            <li>Приостановить подозреваемых на время проверки</li>
+                            <li>Обеспечить прозрачность процесса</li>
+                            <li>Принять меры по результатам расследования</li>
+                            <li>Усилить контроль в департаменте</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="topic-card">
+                <div class="topic-title">
+                    <span class="emoji">📰</span>
+                    Ситуация: Негатив в СМИ о Правительстве
+                </div>
+                <div class="topic-content">
+                    <div class="answer-block">
+                        <span class="answer-label">Действия:</span>
+                        <ol style="margin-left: 1.5rem; color: var(--text-secondary);">
+                            <li>Проверить факты из публикации</li>
+                            <li>Подготовить официальный ответ</li>
+                            <li>Опровергнуть ложную информацию с доказательствами</li>
+                            <li>Провести пресс-конференцию при необходимости</li>
+                            <li>Усилить информационную работу</li>
+                            <li>Проанализировать причины негатива</li>
+                            <li>Принять меры для улучшения имиджа</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="important-note">
+                <strong>💡 На собеседовании:</strong> В ситуационных задачах покажи системное мышление, знание процедур и приоритет безопасности граждан.
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>🏛️ Arizona Government | Saint Rose RP © 2025</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Создано для подготовки к собеседованиям в Правительство штата Аризона</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--text-secondary);">Удачи на собеседовании! 🍀</p>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="#" class="active" data-chapter="intro">🏠<br>Главная</a></li>
+            <li><a href="#" data-chapter="constitution">📜<br>Устав</a></li>
+            <li><a href="#" data-chapter="structure">🏢<br>Структура</a></li>
+            <li><a href="#" data-chapter="laws">⚖️<br>Законы</a></li>
+            <li><a href="#" data-chapter="interview">💼<br>Вопросы</a></li>
+            <li><a href="#" data-chapter="ethics">🎖️<br>Этика</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        // Chapter navigation
+        document.querySelectorAll('[data-chapter]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const chapterId = this.getAttribute('data-chapter');
+                
+                // Update active states
+                document.querySelectorAll('[data-chapter]').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.chapter-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.chapter-section').forEach(s => s.classList.remove('active'));
+                
+                // Set new active
+                this.classList.add('active');
+                document.querySelector(`.chapter-btn[data-chapter="${chapterId}"]`)?.classList.add('active');
+                document.getElementById(chapterId)?.classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
